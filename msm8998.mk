@@ -1,6 +1,6 @@
 TARGET_USES_AOSP := true
 TARGET_USES_QCOM_BSP := false
-#DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8998/overlay
+DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8998/overlay
 
 TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
@@ -306,3 +306,6 @@ PRODUCT_PACKAGES += android.hardware.thermal@1.0-impl \
 SDM660_DISABLE_MODULE := true
 
 PRODUCT_PROPERTY_OVERRIDES += rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so
+
+# Enable vndk-sp Libraries
+PRODUCT_PACKAGES += vndk_package
