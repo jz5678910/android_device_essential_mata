@@ -42,8 +42,6 @@ PRODUCT_COPY_FILES += \
     device/qcom/msm8998/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
     device/qcom/msm8998/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
     device/qcom/msm8998/media_codecs_vendor_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_vendor_audio.xml
-PRODUCT_PROPERTY_OVERRIDES  += \
-    media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 ifneq ($(TARGET_DISABLE_DASH), true)
@@ -121,6 +119,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 DEVICE_MANIFEST_FILE := device/qcom/msm8998/manifest.xml
 DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/msm8998/framework_manifest.xml
 
 # Audio configuration file
 -include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
@@ -223,6 +222,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/qcom/msm8998/init.qti.qseecomd.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qti.qseecomd.sh
 
+# VB xml
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += device/qcom/msm8998/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
@@ -282,6 +284,9 @@ ifeq ($(ENABLE_VENDOR_IMAGE), true)
 KMGK_USE_QTI_SERVICE := true
 endif
 
+#Enable KEYMASTER 4.0
+ENABLE_KM_4_0 := true
+
 #Enable AOSP KEYMASTER and GATEKEEPER HIDLs
 ifneq ($(KMGK_USE_QTI_SERVICE), true)
 PRODUCT_PACKAGES += android.hardware.gatekeeper@1.0-impl \
@@ -306,6 +311,9 @@ PRODUCT_PACKAGES += android.hardware.thermal@1.0-impl \
 SDM660_DISABLE_MODULE := true
 
 PRODUCT_PROPERTY_OVERRIDES += rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so
+PRODUCT_PROPERTY_OVERRIDES += vendor.rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so
+
+PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 # Enable vndk-sp Libraries
 PRODUCT_PACKAGES += vndk_package
