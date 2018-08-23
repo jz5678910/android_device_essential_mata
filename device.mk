@@ -19,11 +19,11 @@ DEVICE_PACKAGE_OVERLAYS += device/essential/mata/overlay
 PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
 
-# Properties
--include device/essential/mata/vendor_prop.mk
-
 GAPPS_VARIANT := nano
 $(call inherit-product-if-exists, vendor/opengapps/build/opengapps-packages.mk)
+
+# Properties
+-include device/essential/mata/vendor_prop.mk
 
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
@@ -67,13 +67,20 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
+# A/B support
+PRODUCT_PACKAGES += \
+    otapreopt_script \
+    cppreopts.sh \
+    update_engine \
+    update_verifier
+
 # A/B
 AB_OTA_UPDATER := true
 
 AB_OTA_PARTITIONS += \
     boot \
     system \
-    vendor
+    vendor 
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -88,19 +95,27 @@ PRODUCT_PACKAGES += \
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1312
 
-# Boot control
-PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-service \
-    bootctrl.msm8998 \
+#A/B related packages
+PRODUCT_PACKAGES += update_engine \
+		    update_engine_client \
+		    update_verifier \
+		    bootctrl.msm8998 \
+		    brillo_update_payload \
+		    android.hardware.boot@1.0-impl \
+		    android.hardware.boot@1.0-service
 
+# The following modules are included in debuggable builds only.
 PRODUCT_PACKAGES_DEBUG += \
-    bootctl
+    bootctl \
+    update_engine_client
 
+# Enable update engine sideloading by including the static version of the
+# boot_control HAL and its dependencies.
 PRODUCT_STATIC_BOOT_CONTROL_HAL := \
     bootctrl.msm8998 \
     libgptutils \
-    libz
+    libz \
+    libcutils
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -130,6 +145,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heaptargetutilization=0.75 \
     dalvik.vm.heapminfree=512k \
     dalvik.vm.heapmaxfree=8m
+
+# Device settings
+PRODUCT_PACKAGES += \
+    DeviceSettings
 
 # Display
 PRODUCT_PACKAGES += \
