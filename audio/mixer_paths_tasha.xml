@@ -2942,12 +2942,13 @@
         <path name="audio-ull-playback speaker" />
     </path>
 
+    <path name="mqa-playback">
+    </path>
+
     <path name="mqa-playback usb-headphones">
-        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
     <path name="mqa-playback usb-headset">
-        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
     <path name="voice-rx">
@@ -2972,7 +2973,10 @@
 
     <path name="incall-music-uplink-mic-mute">
         <path name="incall-music-uplink" />
+        <ctl name="DEC5 Volume" value="0" />
+        <ctl name="DEC6 Volume" value="0" />
         <ctl name="DEC7 Volume" value="0" />
+        <ctl name="DEC8 Volume" value="0" />
     </path>
 
     <path name="incall-rec-downlink-earpiece-mute">
