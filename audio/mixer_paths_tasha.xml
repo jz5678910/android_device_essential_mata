@@ -668,14 +668,6 @@
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
-    <path name="deep-buffer-playback speaker">
-        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia1" value="1" />
-    </path>
-
-    <path name="deep-buffer-playback speaker-protected">
-        <path name="deep-buffer-playback" />
-    </path>
-
     <path name="deep-buffer-playback hdmi">
         <ctl name="HDMI Mixer MultiMedia1" value="1" />
     </path>
