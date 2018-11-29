@@ -50,17 +50,17 @@
     <ctl name="LINEOUT2 Volume" value="13" />
     <ctl name="LINEOUT3 Volume" value="13" />
     <ctl name="LINEOUT4 Volume" value="13" />
-    <ctl name="HPHL Volume" value="20" />
-    <ctl name="HPHR Volume" value="20" />
-    <ctl name="RX0 Digital Volume" value="84" />
+    <ctl name="HPHL Volume" value="15" />
+    <ctl name="HPHR Volume" value="15" />
+    <ctl name="RX0 Digital Volume" value="93" />
     <ctl name="RX1 Digital Volume" value="84" />
     <ctl name="RX2 Digital Volume" value="84" />
-    <ctl name="RX3 Digital Volume" value="84" />
-    <ctl name="RX4 Digital Volume" value="84" />
-    <ctl name="RX5 Digital Volume" value="84" />
-    <ctl name="RX6 Digital Volume" value="84" />
-    <ctl name="RX7 Digital Volume" value="84" />
-    <ctl name="RX8 Digital Volume" value="84" />
+    <ctl name="RX3 Digital Volume" value="93" />
+    <ctl name="RX4 Digital Volume" value="93" />
+    <ctl name="RX5 Digital Volume" value="93" />
+    <ctl name="RX6 Digital Volume" value="93" />
+    <ctl name="RX7 Digital Volume" value="93" />
+    <ctl name="RX8 Digital Volume" value="93" />
     <ctl name="ADC1 Volume" value="12" />
     <ctl name="ADC2 Volume" value="12" />
     <ctl name="ADC3 Volume" value="0" />
@@ -76,12 +76,12 @@
     <ctl name="DEC6 Volume" value="84" />
     <ctl name="DEC7 Volume" value="84" />
     <ctl name="DEC8 Volume" value="84" />
-    <ctl name="COMP1 Switch" value="1" />
-    <ctl name="COMP2 Switch" value="1" />
+    <ctl name="COMP1 Switch" value="0" />
+    <ctl name="COMP2 Switch" value="0" />
     <ctl name="COMP3 Switch" value="0" />
     <ctl name="COMP7 Switch" value="0" />
     <ctl name="COMP8 Switch" value="0" />
-    <ctl name="RX HPH Mode" value="CLS_H_LP" />
+    <ctl name="RX HPH Mode" value="CLS_H_HIFI" />
     <ctl name="SLIMBUS_3_RX Port Mixer MI2S_TX" value="0" />
     <ctl name="SLIMBUS_0_RX Port Mixer SLIM_0_TX" value="0" />
     <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia1" value="0" />
@@ -669,8 +669,15 @@
     </path>
 
     <path name="deep-buffer-playback speaker">
+        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
+        <ctl name="SLIM RX0 MUX" value="AIF_MIX1_PB" />
+        <ctl name="SLIM_0_RX Channels" value="One" />
+        <ctl name="RX INT0_1 MIX1 INP0" value="RX0" />
+        <ctl name="RX INT0 DEM MUX" value="CLSH_DSM_OUT" />
+        <ctl name="EAR PA Gain" value="G_6_DB" />
+        <ctl name="RX0 Digital Volume" value="95" />
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia1" value="1" />
-    </path>
+        </path>
 
     <path name="deep-buffer-playback speaker-protected">
         <path name="deep-buffer-playback" />
@@ -1979,7 +1986,6 @@
         <ctl name="SLIM TX6 MUX" value="DEC6" />
         <ctl name="ADC MUX6" value="AMIC" />
         <ctl name="AMIC MUX6" value="ADC1" />
-        <ctl name="IIR0 INP0 MUX" value="DEC6" />
     </path>
 
     <path name="adc2">
@@ -1988,7 +1994,6 @@
         <ctl name="SLIM TX0 MUX" value="DEC0" />
         <ctl name="ADC MUX0" value="AMIC" />
         <ctl name="AMIC MUX0" value="ADC2" />
-        <ctl name="IIR0 INP0 MUX" value="DEC0" />
     </path>
 
     <path name="adc5">
@@ -1997,7 +2002,6 @@
         <ctl name="SLIM TX5 MUX" value="DEC5" />
         <ctl name="ADC MUX5" value="AMIC" />
         <ctl name="AMIC MUX5" value="ADC5" />
-        <ctl name="IIR0 INP0 MUX" value="DEC5" />
     </path>
 
     <path name="adc6">
@@ -2006,7 +2010,6 @@
         <ctl name="SLIM TX7 MUX" value="DEC7" />
         <ctl name="ADC MUX7" value="AMIC" />
         <ctl name="AMIC MUX7" value="ADC6" />
-        <ctl name="IIR0 INP0 MUX" value="DEC7" />
     </path>
 
     <!-- For Tasha, DMIC numbered from 0 to 5 -->
@@ -2016,7 +2019,6 @@
         <ctl name="SLIM TX7 MUX" value="DEC7" />
         <ctl name="ADC MUX7" value="DMIC" />
         <ctl name="DMIC MUX7" value="DMIC0" />
-        <ctl name="IIR0 INP0 MUX" value="DEC7" />
     </path>
 
     <path name="dmic2">
@@ -2025,7 +2027,6 @@
         <ctl name="SLIM TX7 MUX" value="DEC7" />
         <ctl name="ADC MUX7" value="DMIC" />
         <ctl name="DMIC MUX7" value="DMIC1" />
-        <ctl name="IIR0 INP0 MUX" value="DEC7" />
     </path>
 
     <path name="dmic3">
@@ -2034,7 +2035,6 @@
         <ctl name="SLIM TX7 MUX" value="DEC7" />
         <ctl name="ADC MUX7" value="DMIC" />
         <ctl name="DMIC MUX7" value="DMIC2" />
-        <ctl name="IIR0 INP0 MUX" value="DEC7" />
     </path>
 
     <path name="dmic4">
@@ -2043,7 +2043,6 @@
         <ctl name="SLIM TX7 MUX" value="DEC7" />
         <ctl name="ADC MUX7" value="DMIC" />
         <ctl name="DMIC MUX7" value="DMIC3" />
-        <ctl name="IIR0 INP0 MUX" value="DEC7" />
     </path>
 
     <path name="dmic5">
@@ -2052,7 +2051,6 @@
         <ctl name="SLIM TX7 MUX" value="DEC7" />
         <ctl name="ADC MUX7" value="DMIC" />
         <ctl name="DMIC MUX7" value="DMIC4" />
-        <ctl name="IIR0 INP0 MUX" value="DEC7" />
     </path>
 
     <path name="dmic6">
@@ -2061,7 +2059,6 @@
         <ctl name="SLIM TX7 MUX" value="DEC7" />
         <ctl name="ADC MUX7" value="DMIC" />
         <ctl name="DMIC MUX7" value="DMIC5" />
-        <ctl name="IIR0 INP0 MUX" value="DEC7" />
     </path>
 
     <path name="speaker">
@@ -2291,7 +2288,7 @@
     </path>
 
     <path name="hph-lowpower-mode">
-        <ctl name="RX HPH Mode" value="CLS_H_LP" />
+        <ctl name="RX HPH Mode" value="CLS_H_HIFI" />
     </path>
 
     <path name="line">
@@ -2793,6 +2790,10 @@
     </path>
 
     <path name="unprocessed-mic">
+        <path name="unprocessed-handset-mic" />
+    </path>
+    
+    <path name="unprocessed-stereo-mic">
         <path name="unprocessed-handset-mic" />
     </path>
 
