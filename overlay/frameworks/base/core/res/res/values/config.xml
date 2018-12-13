@@ -336,10 +336,6 @@
         <item>"/system/framework/boot.vdex"</item>
         <item>"/system/framework/arm64/boot-core-libart.oat"</item>
         <item>"/system/framework/boot-core-libart.vdex"</item>
-        <item>"/system/priv-app/SystemUI/SystemUI.apk"</item>
-        <item>"/system/priv-app/SystemUI/oat/arm64/SystemUI.vdex"</item>
-        <item>"/system/priv-app/SystemUI/oat/arm64/SystemUI.odex"</item>
-        <item>"/system/lib64/libsurfaceflinger.so"</item>
     </string-array>
 
     <!-- True if camera app should be pinned via Pinner Service -->
@@ -398,14 +394,8 @@
          black in software (to avoid aliasing or emulate a cutout that is not physically existent).
      -->
     <bool name="config_fillMainBuiltInDisplayCutout">false</bool>
-
-    <!-- Enable ACS (auto channel selection) for Wifi hotspot (SAP) -->
-    <bool translatable="false" name="config_wifi_softap_acs_supported">true</bool>
-
-    <!-- Enable 802.11ac for Wifi hotspot (SAP) -->
-    <bool translatable="false" name="config_wifi_softap_ieee80211ac_supported">true</bool>
-
-    <!-- Make things go fast -->
+    
+        <!-- Make things go fast -->
     <bool name="config_ui_enableFadingMarquee">false</bool>
 
 </resources>
